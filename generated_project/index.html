@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            width: 300px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .display {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 24px;
+            text-align: right;
+            border: none;
+            border-radius: 10px;
+            background-color: #fff;
+        }
+        .button {
+            width: 60px;
+            height: 40px;
+            margin: 5px;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" class="display" disabled>
+        <div class="buttons">
+            <button class="button" onclick="handleClick('7')">7</button>
+            <button class="button" onclick="handleClick('8')">8</button>
+            <button class="button" onclick="handleClick('9')">9</button>
+            <button class="button" onclick="handleClick('/')">/</button>
+            <button class="button" onclick="handleClick('4')">4</button>
+            <button class="button" onclick="handleClick('5')">5</button>
+            <button class="button" onclick="handleClick('6')">6</button>
+            <button class="button" onclick="handleClick('*')">*</button>
+            <button class="button" onclick="handleClick('1')">1</button>
+            <button class="button" onclick="handleClick('2')">2</button>
+            <button class="button" onclick="handleClick('3')">3</button>
+            <button class="button" onclick="handleClick('-')">-</button>
+            <button class="button" onclick="handleClick('0')">0</button>
+            <button class="button" onclick="handleClick('.')">.</button>
+            <button class="button" onclick="handleClick('=')">=</button>
+            <button class="button" onclick="handleClick('+')">+</button>
+            <button class="button" onclick="handleClick('clear')">C</button>
+        </div>
+    </div>
+    <script>
+        let displayValue = '';
+        const displayElement = document.getElementById('display');
+        function handleClick(value) {
+            if (value === 'clear') {
+                displayValue = '';
+                displayElement.value = '';
+            } else if (value === '=') {
+                try {
+                    displayValue = eval(displayValue);
+                    displayElement.value = displayValue;
+                } catch (error) {
+                    displayValue = 'Error';
+                    displayElement.value = 'Error';
+                }
+            } else {
+                displayValue += value;
+                displayElement.value = displayValue;
+            }
+        }
+    </script>
+</body>
+</html>
+
+ 
+ 
